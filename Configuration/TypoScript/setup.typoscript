@@ -1,0 +1,115 @@
+plugin.tx_comments_comment {
+    view {
+        templateRootPaths.0 = EXT:comments/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_comments_comment.view.templateRootPath}
+        partialRootPaths.0 = EXT:comments/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_comments_comment.view.partialRootPath}
+        layoutRootPaths.0 = EXT:comments/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_comments_comment.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_comments_comment.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+    settings {
+        termsRequired = {$plugin.tx_comments_comment.settings.termsRequired}
+        dateFormat = {$plugin.tx_comments_comment.settings.dateFormat}
+        timeFormat = {$plugin.tx_comments_comment.settings.timeFormat}
+    }
+}
+
+page {
+    includeCSS {
+        StyleCss = {$plugin.tx_comments_comment.settings.StyleCss}
+        StyleCss.if.isTrue = {$plugin.tx_comments_comment.settings.StyleCss}
+        FontAwesomeCss = {$plugin.tx_comments_comment.settings.FontAwesomeCss}
+        FontAwesomeCss.if.isTrue = {$plugin.tx_comments_comment.settings.FontAwesomeCss}
+    }
+    includeJS {
+        Minjs = {$plugin.tx_comments_comment.settings.Minjs}
+    }
+    includeJSFooter {
+        CustomJS = {$plugin.tx_comments_comment.settings.CustomJS}
+        CustomJS.if.isTrue = {$plugin.tx_comments_comment.settings.CustomJS}
+    }
+}
+
+commentAjaxCall = PAGE
+commentAjaxCall {
+    typeNum = 1730800496
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        debug = 0
+        no_cache = 1
+        admPanel = 0
+    }
+    315123 = USER
+    315123 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        pluginName = Comment
+        extensionName = Comments
+        controller = Comment
+        vendorName = Rd
+        action = create
+        switchableControllerActions {
+            Comment {
+                1 = create
+            }
+        }
+    }
+}
+
+
+likeAjaxCall = PAGE
+likeAjaxCall {
+    typeNum = 1730800496
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        debug = 0
+        no_cache = 1
+        admPanel = 0
+        additionalHeaders {
+            10.header = Content-Type: application/json
+        }
+    }
+    315123 = USER
+    315123 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        pluginName = Comment
+        extensionName = Comments
+        controller = Comment
+        vendorName = Rd
+        action = like
+        switchableControllerActions {
+            Comment {
+                1 = like
+            }
+        }
+    }
+}
+  
+tt_content.list.20.comments_comment = USER
+tt_content.list.20.comments_comment {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = Comments
+    pluginName = Comment
+    controller = Comment
+    action = list
+    settings < plugin.tx_comments_comment.settings
+} 
+
+plugin.tx_comments_comment {
+    features.skipDefaultArguments = 1
+    mvc.callDefaultActionIfActionCantBeResolved = 1
+}
+

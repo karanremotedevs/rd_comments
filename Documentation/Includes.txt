@@ -1,0 +1,6 @@
+.. TYPO3 extension documentation master file
+
+:Author: Your Name
+:Contact: your@email.com
+:License: Open Content License available from http://www.opencontent.org/opl.shtml
+:RenderedVersion: |release|
