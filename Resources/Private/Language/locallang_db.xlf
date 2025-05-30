@@ -6,52 +6,52 @@
 			<trans-unit id="commnentplugintab.header" resname="commnentplugintab.header">
 				<source>Comment</source> 
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment">
+			<trans-unit id="tx_rdcomments_domain_model_comment">
 				<source>Comment</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.newsComment">
+			<trans-unit id="tx_rdcomments_domain_model_comment.newsComment">
 				<source>News Comment</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.newComments">
+			<trans-unit id="tx_rdcomments_domain_model_comment.newComments">
 				<source>Comments</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.newsuid">
+			<trans-unit id="tx_rdcomments_domain_model_comment.newsuid">
 				<source>News UID</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.username">
+			<trans-unit id="tx_rdcomments_domain_model_comment.username">
 				<source>Name</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.usermail">
+			<trans-unit id="tx_rdcomments_domain_model_comment.usermail">
 				<source>Email</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.comment">
+			<trans-unit id="tx_rdcomments_domain_model_comment.comment">
 				<source>Comment</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.childcomment">
+			<trans-unit id="tx_rdcomments_domain_model_comment.childcomment">
 				<source>Reply Comment</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.terms">
+			<trans-unit id="tx_rdcomments_domain_model_comment.terms">
 				<source>Terms accepted</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.paramlink">
+			<trans-unit id="tx_rdcomments_domain_model_comment.paramlink">
 				<source>Parameter Link to comments</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.comment">
+			<trans-unit id="tx_rdcomments_domain_model_comment.comment">
 				<source>Comments</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.image">
+			<trans-unit id="tx_rdcomments_domain_model_comment.image">
 				<source>Image</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.feuserid">
+			<trans-unit id="tx_rdcomments_domain_model_comment.feuserid">
 				<source>Website User Id</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_domain_model_comment.accesstoken">
+			<trans-unit id="tx_rdcomments_domain_model_comment.accesstoken">
 				<source>Comment Access token</source>		
 			</trans-unit>
-			<trans-unit id="tx_comments_comment.name">
-				<source>Comments</source>
+			<trans-unit id="tx_rdcomments_comment.name">
+				<source>RD Comments</source>
 			</trans-unit>
-			<trans-unit id="tx_comments_comment.description">
+			<trans-unit id="tx_rdcomments_comment.description">
                 <source>Engage with individual news pieces through comments</source>
             </trans-unit>
 			<trans-unit id="tx_newscomment_domain_model_rating.crdate">
@@ -149,6 +149,9 @@
 			</trans-unit>
 			<trans-unit id="flexform.dateFormat.3">
 				<source>d/m/Y (26/05/2017)</source>
+			</trans-unit>
+			<trans-unit id="flexform.dateFormat.4">
+				<source>d.m.Y (26.05.2017)</source>
 			</trans-unit>
 			<trans-unit id="flexform.timeFormat.0">
 				<source>g:i a (11:36 am)</source>

@@ -151,8 +151,6 @@ $(document).ready(function () {
     });
 });
 
-
-
 // like comment using Ajax
 $(document).on('click', '.comment-btn.like', function(e) {
     e.preventDefault();
@@ -160,7 +158,7 @@ $(document).on('click', '.comment-btn.like', function(e) {
     // Grab the URL that includes `type=1730800496`
     let likeAjaxUrl = $('.comments-container').data('like-url');
     // Remove action param from URL if it's included
-    likeAjaxUrl = likeAjaxUrl.replace(/([&?])tx_comments_comment\[action\]=[^&]*/g, '');
+    likeAjaxUrl = likeAjaxUrl.replace(/([&?])tx_rdcomments_rdcomment\[action\]=[^&]*/g, '');
 
     const commentId = $(this).closest('.comment-footer').attr('id');
     const $icon     = $(this).find('i');
@@ -176,10 +174,10 @@ $(document).on('click', '.comment-btn.like', function(e) {
             method: 'POST',
             dataType: 'json',
             data: {
-            'tx_comments_comment[commentId]': commentId,
-            'tx_comments_comment[action]': 'like', // always call likeAction
-            'tx_comments_comment[userAction]': action, // real intent: like or unlike
-            'tx_comments_comment[controller]': 'Comment'
+            'tx_rdcomments_rdcomment[commentId]': commentId,
+            'tx_rdcomments_rdcomment[action]': 'like', // always call likeAction
+            'tx_rdcomments_rdcomment[userAction]': action, // real intent: like or unlike
+            'tx_rdcomments_rdcomment[controller]': 'Comment'
             },
             success: function(response) {
             if (response.success) {
@@ -203,7 +201,6 @@ $(document).on('click', '.comment-btn.like', function(e) {
             }
         });
 });
-
 
 // Open form on close button click
 function closeReplyForm() {

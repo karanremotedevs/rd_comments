@@ -1,6 +1,6 @@
 <?php
 
-namespace Rd\Comments\Domain\Model;
+namespace RemoteDevs\RdComments\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
@@ -10,7 +10,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- * (c) 2025 Abhay Rathod <abhay.remotedevs@gmail.com>, RD
+ * (c) 2025 Abhay Rathod <abhay.remotedevs@gmail.com>, RemoteDevs
  */
 
 /**

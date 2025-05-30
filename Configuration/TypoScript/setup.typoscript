@@ -1,14 +1,14 @@
-plugin.tx_comments_comment {
+plugin.tx_rdcomments_rdcomment {
     view {
-        templateRootPaths.0 = EXT:comments/Resources/Private/Templates/
-        templateRootPaths.1 = {$plugin.tx_comments_comment.view.templateRootPath}
-        partialRootPaths.0 = EXT:comments/Resources/Private/Partials/
-        partialRootPaths.1 = {$plugin.tx_comments_comment.view.partialRootPath}
-        layoutRootPaths.0 = EXT:comments/Resources/Private/Layouts/
-        layoutRootPaths.1 = {$plugin.tx_comments_comment.view.layoutRootPath}
+        templateRootPaths.0 = EXT:rd_comments/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_rdcomments_rdcomment.view.templateRootPath}
+        partialRootPaths.0 = EXT:rd_comments/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_rdcomments_rdcomment.view.partialRootPath}
+        layoutRootPaths.0 = EXT:rd_comments/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_rdcomments_rdcomment.view.layoutRootPath}
     }
     persistence {
-        storagePid = {$plugin.tx_comments_comment.persistence.storagePid}
+        storagePid = {$plugin.tx_rdcomments_rdcomment.persistence.storagePid}
         #recursive = 1
     }
     features {
@@ -20,25 +20,26 @@ plugin.tx_comments_comment {
         #callDefaultActionIfActionCantBeResolved = 1
     }
     settings {
-        termsRequired = {$plugin.tx_comments_comment.settings.termsRequired}
-        dateFormat = {$plugin.tx_comments_comment.settings.dateFormat}
-        timeFormat = {$plugin.tx_comments_comment.settings.timeFormat}
+        termsRequired = {$plugin.tx_rdcomments_rdcomment.settings.termsRequired}
+        termsTypolinkParameter = {$plugin.tx_rdcomments_rdcomment.settings.termsTypolinkParameter}
+        dateFormat = {$plugin.tx_rdcomments_rdcomment.settings.dateFormat}
+        timeFormat = {$plugin.tx_rdcomments_rdcomment.settings.timeFormat}
     }
 }
 
 page {
     includeCSS {
-        StyleCss = {$plugin.tx_comments_comment.settings.StyleCss}
-        StyleCss.if.isTrue = {$plugin.tx_comments_comment.settings.StyleCss}
-        FontAwesomeCss = {$plugin.tx_comments_comment.settings.FontAwesomeCss}
-        FontAwesomeCss.if.isTrue = {$plugin.tx_comments_comment.settings.FontAwesomeCss}
+        StyleCss = {$plugin.tx_rdcomments_rdcomment.settings.StyleCss}
+        StyleCss.if.isTrue = {$plugin.tx_rdcomments_rdcomment.settings.StyleCss}
+        FontAwesomeCss = {$plugin.tx_rdcomments_rdcomment.settings.FontAwesomeCss}
+        FontAwesomeCss.if.isTrue = {$plugin.tx_rdcomments_rdcomment.settings.FontAwesomeCss}
     }
     includeJS {
-        Minjs = {$plugin.tx_comments_comment.settings.Minjs}
+        Minjs = {$plugin.tx_rdcomments_rdcomment.settings.Minjs}
     }
     includeJSFooter {
-        CustomJS = {$plugin.tx_comments_comment.settings.CustomJS}
-        CustomJS.if.isTrue = {$plugin.tx_comments_comment.settings.CustomJS}
+        CustomJS = {$plugin.tx_rdcomments_rdcomment.settings.CustomJS}
+        CustomJS.if.isTrue = {$plugin.tx_rdcomments_rdcomment.settings.CustomJS}
     }
 }
 
@@ -55,10 +56,10 @@ commentAjaxCall {
     315123 = USER
     315123 {
         userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-        pluginName = Comment
-        extensionName = Comments
+        pluginName = RdComment
+        extensionName = RdComments
         controller = Comment
-        vendorName = Rd
+        vendorName = RemoteDevs
         action = create
         switchableControllerActions {
             Comment {
@@ -85,10 +86,10 @@ likeAjaxCall {
     315123 = USER
     315123 {
         userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-        pluginName = Comment
-        extensionName = Comments
+        pluginName = RdComment
+        extensionName = RdComments
         controller = Comment
-        vendorName = Rd
+        vendorName = RemoteDevs
         action = like
         switchableControllerActions {
             Comment {
@@ -98,17 +99,17 @@ likeAjaxCall {
     }
 }
   
-tt_content.list.20.comments_comment = USER
-tt_content.list.20.comments_comment {
+tt_content.list.20.rdcomments_rdcomment = USER
+tt_content.list.20.rdcomments_rdcomment {
     userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-    extensionName = Comments
-    pluginName = Comment
+    extensionName = RdComments
+    pluginName = RdComment
     controller = Comment
     action = list
-    settings < plugin.tx_comments_comment.settings
+    settings < plugin.tx_rdcomments_rdcomment.settings
 } 
 
-plugin.tx_comments_comment {
+plugin.tx_rdcomments_rdcomment {
     features.skipDefaultArguments = 1
     mvc.callDefaultActionIfActionCantBeResolved = 1
 }

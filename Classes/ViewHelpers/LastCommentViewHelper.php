@@ -1,10 +1,10 @@
 <?php
 
-namespace Rd\Comments\ViewHelpers;
+namespace RemoteDevs\RdComments\ViewHelpers;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-use Rd\Comments\Domain\Repository\CommentRepository;
+use RemoteDevs\RdComments\Domain\Repository\CommentRepository;
 
 /**
  * This file is part of the "comment" Extension for TYPO3 CMS.
@@ -12,7 +12,7 @@ use Rd\Comments\Domain\Repository\CommentRepository;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- * (c) 2025 Abhay Rathod <abhay.remotedevs@gmail.com>, RD
+ * (c) 2025 Abhay Rathod <abhay.remotedevs@gmail.com>, RemoteDevs
  */
 
 /**

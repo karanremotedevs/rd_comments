@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Rd\Comments\Controller\CommentController;
+use RemoteDevs\RdComments\Controller\CommentController;
 
 return [
     'comments' => [
@@ -10,8 +10,8 @@ return [
         'access' => 'systemMaintainer',
         'path' => '/module/comments',
         'iconIdentifier' => 'comment-plugin-comment',
-        'labels' => 'LLL:EXT:comments/Resources/Private/Language/locallang_mod.xlf',
-        'extensionName' => 'Comments',
+        'labels' => 'LLL:EXT:rd_comments/Resources/Private/Language/locallang_mod.xlf',
+        'extensionName' => 'RdComments',
         'navigationComponentId' => 'TYPO3.Backend',
         'routes' => [
             'backendList' => [

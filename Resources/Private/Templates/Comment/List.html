@@ -1,10 +1,5 @@
 <f:layout name="Default" />
 
-<f:comment>
-    lib object to add in news detail view without a plugin.
-    <f:cObject typoscriptObjectPath="lib.tx_newscomments.comment">{newsItem.uid}</f:cObject>
-</f:comment>
-
 <f:section name="main">
     <f:flashMessages />
     <f:if condition="{newsID}">
@@ -24,7 +19,7 @@
             </div>
 
             <!-- Comments Section -->
-            <div class="comments-container" data-like-url="{f:uri.action( action: 'like', controller: 'Comment', extensionName: 'Comments', pluginName: 'Comment', absolute: true, pageType: 1730800496 )}">
+            <div class="comments-container" data-like-url="{f:uri.action( action: 'like', controller: 'Comment', extensionName: 'RemotedevsComments', pluginName: 'Comment', absolute: true, pageType: 1730800496 )}">
                 <div class="messages thanksmsg" style="display: none;">
                     <div class="rd-alert rd-alert-success"><f:translate key="form.thankyouMessage"/></div>
                 </div>

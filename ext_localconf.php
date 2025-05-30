@@ -8,30 +8,29 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 (static function() {
     ExtensionUtility::configurePlugin(
-        'Comments',
-        'Comment',
+        'RdComments',
+        'RdComment',
         [
-            \Rd\Comments\Controller\CommentController::class => 'list, create, delete, like'
+            \RemoteDevs\RdComments\Controller\CommentController::class => 'list, create, delete, like'
         ],
         // non-cacheable actions
         [
-            \Rd\Comments\Controller\CommentController::class => 'list, create, delete, like'
+            \RemoteDevs\RdComments\Controller\CommentController::class => 'list, create, delete, like'
         ]
     );
 
     ExtensionManagementUtility::addPageTSConfig(
         'mod {
             wizards.newContentElement.wizardItems.commnentplugintab {
-            header = LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:commnentplugintab.header
-
+            header = LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:commnentplugintab.header
                 elements {
                     comments {
-                        iconIdentifier = comment-plugin-comment
-                        title = LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:tx_comments_comment.name
-                        description = LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:tx_comments_comment.description
+                        iconIdentifier = rd_comments-plugin-comment
+                        title = LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:tx_rdcomments_comment.name
+                        description = LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:tx_rdcomments_comment.description
                         tt_content_defValues {
                             CType = list
-                            list_type = comments_comment
+                            list_type = rdcomments_rdcomment
                         }
                     }
                 }

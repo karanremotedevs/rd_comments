@@ -1,46 +1,40 @@
 {
-    "name": "rd/comments",
-    "type": "typo3-cms-extension",
-    "description": "",
-    "authors": [
-        {
-            "name": "Abhay Rathod",
-            "role": "Developer"
-        }
-    ],
-    "license": "GPL-2.0-or-later",
-    "require": {
-        "typo3/cms-core": "^13 || ^12",
-        "georgringer/news": "^11 || ^12"
-    },
-    "support": {
-        "issues": "https://github.com/karanremotedevs/Comments/issues"
-    },
-    "require-dev": {
-        "typo3/testing-framework": "^6.9.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Rd\\Comments\\": "Classes"
-        }
-    },
-    "replace": {
-        "typo3-ter/comments": "self.version"
-    },
-    "config": {
-        "vendor-dir": ".Build/vendor",
-        "bin-dir": ".Build/bin"
-    },
-    "extra": {
-        "typo3/cms": {
-            "web-dir": ".Build/public",
-            "extension-key": "comments"
-        }
-    },
-    "repositories": {
-        "packagist.org": {
-            "type": "composer",
-            "url": "https://github.com/karanremotedevs/Comments"
-        }
+  "name": "remotedevs/rd-comments",
+  "type": "typo3-cms-extension",
+  "description": "Comment extension for TYPO3",
+  "authors": [
+    {
+      "name": "Abhay Rathod",
+      "role": "Developer"
     }
+  ],
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "typo3/cms-core": "^12 || ^13",
+    "georgringer/news": "^11 || ^12"
+  },
+  "support": {
+    "issues": "https://github.com/karanremotedevs/Comments/issues"
+  },
+  "require-dev": {
+    "typo3/testing-framework": "^6.9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "RemoteDevs\\RdComments\\": "Classes/"
+    }
+  },
+  "replace": {
+    "typo3-ter/rd_comments": "self.version"
+  },
+  "config": {
+    "vendor-dir": ".Build/vendor",
+    "bin-dir": ".Build/bin"
+  },
+  "extra": {
+    "typo3/cms": {
+      "web-dir": ".Build/public",
+      "extension-key": "rd_comments"
+    }
+  }
 }

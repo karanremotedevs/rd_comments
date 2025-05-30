@@ -1,44 +1,44 @@
-# customsubcategory=200=LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:CommentConfiguration
-# customsubcategory=100=LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:CssJsIncludation
+# customsubcategory=200=LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:CommentConfiguration
+# customsubcategory=100=LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:CssJsIncludation
 
 
-plugin.tx_comments_comment {
+plugin.tx_rdcomments_rdcomment {
     view {
-        # cat=plugin.tx_comments_comment/file; type=string; label=Path to template root (FE)
-        templateRootPath = EXT:comments/Resources/Private/Templates/
-        # cat=plugin.tx_comments_comment/file; type=string; label=Path to template partials (FE)
-        partialRootPath = EXT:comments/Resources/Private/Partials/
-        # cat=plugin.tx_comments_comment/file; type=string; label=Path to template layouts (FE)
-        layoutRootPath = EXT:comments/Resources/Private/Layouts/
+        # cat=plugin.tx_rdcomments_rdcomment/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:rd_comments/Resources/Private/Templates/
+        # cat=plugin.tx_rdcomments_rdcomment/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:rd_comments/Resources/Private/Partials/
+        # cat=plugin.tx_rdcomments_rdcomment/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:rd_comments/Resources/Private/Layouts/
     }
     persistence {
-        # cat=plugin.tx_comments_comment/200/05; type=string; label=Default storage PID
+        # cat=plugin.tx_rdcomments_rdcomment/200/05; type=string; label=Default storage PID
         storagePid =
     }
 
     settings {
-        # cat=plugin.tx_comments_comment/100/01; type=string; label=LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:addstyleCss
-        StyleCss = EXT:comments/Resources/Public/css/style.css
+        # cat=plugin.tx_rdcomments_rdcomment/100/01; type=string; label=LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:addstyleCss
+        StyleCss = EXT:rd_comments/Resources/Public/css/style.css
         
-        # cat=plugin.tx_comments_comment/100/02; type=string; label=LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:addfontAwesomeCss
-        FontAwesomeCss = EXT:comments/Resources/Public/css/font-awesome.min.css
+        # cat=plugin.tx_rdcomments_rdcomment/100/02; type=string; label=LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:addfontAwesomeCss
+        FontAwesomeCss = EXT:rd_comments/Resources/Public/css/font-awesome.min.css
 
-        # cat=plugin.tx_comments_comment/100/03; type=string; label=LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:addCustomJS
-        CustomJS = EXT:comments/Resources/Public/js/custom.js
+        # cat=plugin.tx_rdcomments_rdcomment/100/03; type=string; label=LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:addCustomJS
+        CustomJS = EXT:rd_comments/Resources/Public/js/custom.js
 
-        # cat=plugin.tx_comments_comment/100/04; type=options[LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:addjqueryMinJS.v3=EXT:comments/Resources/Public/js/jquery-3.6.3.min.js,LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:addjqueryMinJS.v2=EXT:comments/Resources/Public/js/jquery-2.2.4.min.js]; label=LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:addjqueryMinJS
-        Minjs = EXT:comments/Resources/Public/js/jquery-3.6.3.min.js
+        # cat=plugin.tx_rdcomments_rdcomment/100/04; type=options[LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:addjqueryMinJS.v3=EXT:rd_comments/Resources/Public/js/jquery-3.6.3.min.js,LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:addjqueryMinJS.v2=EXT:rd_comments/Resources/Public/js/jquery-2.2.4.min.js]; label=LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:addjqueryMinJS
+        Minjs = EXT:rd_comments/Resources/Public/js/jquery-3.6.3.min.js
         
-        # cat=plugin.tx_comments_comment/200/03; type=boolean; label=LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:termsRequired
+        # cat=plugin.tx_rdcomments_rdcomment/200/03; type=boolean; label=LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:termsRequired
         termsRequired = 0
 
-        # cat=plugin.tx_comments_comment/200/04; type=string; label=LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:termsTypolinkParameter
+        # cat=plugin.tx_rdcomments_rdcomment/200/04; type=string; label=LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:termsTypolinkParameter
         termsTypolinkParameter = https://www.remotedevs.in/
 
-        # cat=plugin.tx_comments_comment/200/01; type=options[F j Y,Y-m-d,m/d/Y,d/m/Y]; label=LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:flexform.dateFormat
+        # cat=plugin.tx_rdcomments_rdcomment/200/01; type=options[F j Y,Y-m-d,m/d/Y,d/m/Y,d.m.Y]; label=LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:flexform.dateFormat
         dateFormat = F j Y
 
-        # cat=plugin.tx_comments_comment/200/02; type=options[g:i a,g:i A,H:i]; label=LLL:EXT:comments/Resources/Private/Language/locallang_db.xlf:flexform.timeFormat
+        # cat=plugin.tx_rdcomments_rdcomment/200/02; type=options[g:i a,g:i A,H:i]; label=LLL:EXT:rd_comments/Resources/Private/Language/locallang_db.xlf:flexform.timeFormat
         timeFormat = g:i a
     }
 }

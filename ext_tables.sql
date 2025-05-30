@@ -1,4 +1,4 @@
-CREATE TABLE tx_comments_domain_model_comment (
+CREATE TABLE tx_rdcomments_domain_model_comment (
 	
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE tx_comments_domain_model_comment (
 	KEY parent (pid)
 );
 
-CREATE TABLE tx_comments_domain_model_commentlike (
+CREATE TABLE tx_rdcomments_domain_model_commentlike (
     uid INT(11) NOT NULL AUTO_INCREMENT,
     pid INT(11) DEFAULT 0 NOT NULL,
     comment_uid INT(11) NOT NULL,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rd\Comments\Controller;
+namespace RemoteDevs\RdComments\Controller;
 
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Core\Environment;
@@ -11,7 +11,7 @@ use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Install\Service\SessionService;
-use Rd\Comments\Domain\Model\Comment;
+use RemoteDevs\RdComments\Domain\Model\Comment;
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
@@ -20,11 +20,12 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Core\Resource\Exception\InvalidFileException;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use Rd\Comments\Domain\Repository\CommentRepository;
+use RemoteDevs\RdComments\Domain\Repository\CommentRepository;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Core\Http\JsonResponse;
-use Rd\Comments\Domain\Repository\CommentLikeRepository;
-use Rd\Comments\Domain\Model\CommentLike;
+use RemoteDevs\RdComments\Domain\Repository\CommentLikeRepository;
+use RemoteDevs\RdComments\Domain\Model\CommentLike;
+
 
 /**
  * This file is part of the "comment" Extension for TYPO3 CMS.
@@ -32,7 +33,7 @@ use Rd\Comments\Domain\Model\CommentLike;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- * (c) 2025 Remotedevs <info@remotedevs.in>, RD
+ * (c) 2025 Abhay Rathod <abhay.remotedevs@gmail.com>, RemoteDevs
  */
 
 /**
@@ -121,8 +122,8 @@ class CommentController extends ActionController
         $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 
         if (empty($extbaseFrameworkConfiguration['persistence']['storagePid'])) {
-            if (isset($_REQUEST['tx_comments_domain_model_comment']['Storagepid'])) {
-                $currentPid['persistence']['storagePid'] = $_REQUEST['tx_comments_domain_model_comment']['Storagepid'];
+            if (isset($_REQUEST['tx_rdcomments_domain_model_comment']['Storagepid'])) {
+                $currentPid['persistence']['storagePid'] = $_REQUEST['tx_rdcomments_domain_model_comment']['Storagepid'];
             } else {
                 if (isset($this->settings['storagePid']) && !empty($this->settings['storagePid'])) {
                     $currentPid['persistence']['storagePid'] = $this->settings['storagePid'];
@@ -192,7 +193,7 @@ class CommentController extends ActionController
     /**
      * create action
      *
-     * @param \Rd\Comments\Domain\Model\Comment $newComment
+     * @param \RemoteDevs\Comments\Domain\Model\Comment $newComment
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function createAction(Comment $newComment): ResponseInterface
@@ -395,11 +396,11 @@ class CommentController extends ActionController
     public function backendListAction(): ResponseInterface
     {
         $queryBuilder = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)
-            ->getQueryBuilderForTable('tx_comments_domain_model_comment');
+            ->getQueryBuilderForTable('tx_rdcomments_domain_model_comment');
     
         $commentsRaw = $queryBuilder
             ->select('*')
-            ->from('tx_comments_domain_model_comment')
+            ->from('tx_rdcomments_domain_model_comment')
             ->where(
                 $queryBuilder->expr()->eq('deleted', 0),
                 $queryBuilder->expr()->eq('hidden', 0)
@@ -487,7 +488,7 @@ class CommentController extends ActionController
     /**
      * @return ResponseInterface
      */
-    protected function addBaseUriIfNecessary(string $uri): string
+    protected function addBaseUriIfNecessary($uri): string
     {
         if (PathUtility::isAbsolutePath($uri) || preg_match('#^(\w+:)?//#', $uri)) {
             return $uri;
@@ -516,39 +517,24 @@ class CommentController extends ActionController
      */
     public function deleteAction(int $commentUid): ResponseInterface
     {
-        if ($commentUid <= 0) {
-            $this->addFlashMessage('Invalid comment UID', 'Error', ContextualFeedbackSeverity::ERROR);
-            return $this->redirect('backendList');
-        }
-
         $comment = $this->CommentRepository->findByUid($commentUid);
         if ($comment instanceof Comment) {
-            try {
-                $childComments = $comment->getChildcomment();
-                if ($childComments) {
-                    foreach ($childComments as $childComment) {
-                        \TYPO3\CMS\Core\Utility\DebugUtility::debug($childComment->getUid(), 'Deleting Child Comment');
-                        $this->CommentRepository->remove($childComment);
-                    }
+            $childComments = $comment->getChildcomment();
+            if ($childComments) {
+                foreach ($childComments as $childComment) {
+                    $this->CommentRepository->remove($childComment);
                 }
-                $this->CommentRepository->remove($comment);
-                $this->persistenceManager->persistAll();
-                $this->addFlashMessage(
-                    LocalizationUtility::translate('comment_deleted_successfully', 'Comments'),
-                    'Success',
-                    ContextualFeedbackSeverity::OK
-                );
-            } catch (\Exception $e) {
-                $this->addFlashMessage(
-                    'Persistence error: ' . $e->getMessage(),
-                    'Error',
-                    ContextualFeedbackSeverity::ERROR
-                );
             }
-        } else {
-            \TYPO3\CMS\Core\Utility\DebugUtility::debug($commentUid, 'Comment Not Found');
+            $this->CommentRepository->remove($comment);
+            $this->persistenceManager->persistAll();
             $this->addFlashMessage(
-                LocalizationUtility::translate('comment_not_found', 'Comments'),
+                LocalizationUtility::translate('comment_deleted_successfully', 'Comments') ?? 'Comment deleted successfully.',
+                'Success',
+                ContextualFeedbackSeverity::OK
+            );
+        } else {
+            $this->addFlashMessage(
+                LocalizationUtility::translate('comment_not_found', 'Comments') ?? 'Comment not found.',
                 'Error',
                 ContextualFeedbackSeverity::ERROR
             );
@@ -565,34 +551,20 @@ class CommentController extends ActionController
      */
     public function pinAction(int $commentUid): ResponseInterface
     {
-        if ($commentUid <= 0) {
-            $this->addFlashMessage('Invalid comment UID', 'Error', ContextualFeedbackSeverity::ERROR);
-            return $this->redirect('backendList');
-        }
-
         $comment = $this->CommentRepository->findByUid($commentUid);
         if ($comment instanceof Comment) {
-            try {
-                $comment->setPinned(!$comment->getPinned());
-                $this->CommentRepository->update($comment);
-                $this->persistenceManager->persistAll();
-                $message = $comment->getPinned() ? 'comment_pinned_successfully' : 'comment_unpinned_successfully';
-                $this->addFlashMessage(
-                    LocalizationUtility::translate($message, 'Comments'),
-                    'Success',
-                    ContextualFeedbackSeverity::OK
-                );
-            } catch (\Exception $e) {
-                $this->addFlashMessage(
-                    'Persistence error: ' . $e->getMessage(),
-                    'Error',
-                    ContextualFeedbackSeverity::ERROR
-                );
-            }
-        } else {
-            \TYPO3\CMS\Core\Utility\DebugUtility::debug($commentUid, 'Comment Not Found');
+            $comment->setPinned(!$comment->getPinned());
+            $this->CommentRepository->update($comment);
+            $this->persistenceManager->persistAll();
+            $message = $comment->getPinned() ? 'comment_pinned_successfully' : 'comment_unpinned_successfully';
             $this->addFlashMessage(
-                LocalizationUtility::translate('comment_not_found', 'Comments'),
+                LocalizationUtility::translate($message, 'Comments') ?? $message,
+                'Success',
+                ContextualFeedbackSeverity::OK
+            );
+        } else {
+            $this->addFlashMessage(
+                LocalizationUtility::translate('comment_not_found', 'Comments') ?? 'Comment not found',
                 'Error',
                 ContextualFeedbackSeverity::ERROR
             );

@@ -3,5 +3,5 @@ services:
     autowire: true
     autoconfigure: true
     public: true
-  Rd\Comments\:
+  RemoteDevs\RdComments\:
     resource: '../Classes/*'

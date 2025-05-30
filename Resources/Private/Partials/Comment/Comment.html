@@ -3,7 +3,7 @@
         <div class="rd-alert rd-alert-success"><f:translate key="form.thankyouMessage"/></div>
     </div>
     <div class="comment-avatar">
-        <f:image src="EXT:comments/Resources/Public/Icons/team-image.png" alt="user" height="100" width="100"/>
+        <f:image src="EXT:rd_comments/Resources/Public/Icons/team-image.png" alt="user" height="100" width="100"/>
     </div>
 
     <div class="comment-box">
@@ -22,23 +22,9 @@
                 </span>
                 <f:if condition="{comment.pinned}">
                     <span class="pinned-icon">
-                        <f:image src="EXT:comments/Resources/Public/Icons/pin.svg" alt="Pinned" width="20" height="24"/>
+                        <f:image src="EXT:rd_comments/Resources/Public/Icons/pin.svg" alt="Pinned" width="20" height="24"/>
                     </span>
-                </f:if>  
-                <f:if condition="{comment.rating}">
-                    <span class="rating">
-                            <f:translate key="rating" />:
-                            <f:for each="{0:1, 1:2, 2:3, 3:4, 4:5}" as="i">
-                                <f:if condition="{i} <= {comment.rating}">
-                                    <span class="star filled">★</span>
-                                </f:if>
-                                <f:if condition="{i} > {comment.rating}">
-                                    <span class="star empty">☆</span>
-                                </f:if>
-                            </f:for>
-                            ({comment.rating} / 5)
-                    </span>
-                </f:if>                               
+                </f:if>                           
             </div>
         </div>
         <div class="comment-content">

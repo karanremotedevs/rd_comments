@@ -1,7 +1,7 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'comments',
+    'title' => 'Rd comments',
     'description' => '',
     'category' => 'plugin',
     'author' => 'Abhay Rathod',

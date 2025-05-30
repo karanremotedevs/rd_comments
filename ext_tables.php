@@ -10,7 +10,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 if ((GeneralUtility::makeInstance(Typo3Version::class))->getMajorVersion() == 11) {
     // @extensionScannerIgnoreLine
-    ExtensionManagementUtility::addLLrefForTCAdescr('tx_comments_domain_model_comment', 'EXT:comments/Resources/Private/Language/locallang_csh_tx_comments_domain_model_comment.xlf');
+    ExtensionManagementUtility::addLLrefForTCAdescr('tx_rdcomments_domain_model_comment', 'EXT:rd_comments/Resources/Private/Language/locallang_csh_tx_comments_domain_model_comment.xlf');
     // @extensionScannerIgnoreLine
-    ExtensionManagementUtility::allowTableOnStandardPages('tx_comments_domain_model_comment');
+    ExtensionManagementUtility::allowTableOnStandardPages('tx_rdcomments_domain_model_comment');
 }
