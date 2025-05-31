@@ -1,4 +1,4 @@
-# Rd Comments
+# Rd Comments In Testing
 Easy-to-use TYPO3 extension for managing comments on news articles.
 
 Rd Comments integrates seamlessly with the TYPO3 News extension to enable frontend users to add comments to news posts. It provides a user-friendly interface and powerful moderation features for administrators.
