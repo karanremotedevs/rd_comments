@@ -10,6 +10,8 @@
   ],
   "license": "GPL-2.0-or-later",
   "require": {
+    "php": ">=8.2",
+    "remotedevs/rd-comments": "1.0.0",
     "typo3/cms-core": "^12 || ^13",
     "georgringer/news": "^11 || ^12"
   },
@@ -17,8 +19,6 @@
     "issues": "https://github.com/karanremotedevs/Comments/issues"
   },
   "require-dev": {
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "typo3/testing-framework": "^6.9.0"
   },
   "autoload": {
