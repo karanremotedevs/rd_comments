@@ -17,6 +17,8 @@
     "issues": "https://github.com/karanremotedevs/Comments/issues"
   },
   "require-dev": {
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "typo3/testing-framework": "^6.9.0"
   },
   "autoload": {
