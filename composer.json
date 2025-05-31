@@ -10,8 +10,6 @@
   ],
   "license": "GPL-2.0-or-later",
   "require": {
-    "php": ">=8.2",
-    "remotedevs/rd-comments": "1.0.0",
     "typo3/cms-core": "^12 || ^13",
     "georgringer/news": "^11 || ^12"
   },
@@ -19,7 +17,7 @@
     "issues": "https://github.com/karanremotedevs/Comments/issues"
   },
   "require-dev": {
-    "typo3/testing-framework": "^6.9.0"
+    "typo3/testing-framework": "^8.0.9"
   },
   "autoload": {
     "psr-4": {
@@ -31,7 +29,11 @@
   },
   "config": {
     "vendor-dir": ".Build/vendor",
-    "bin-dir": ".Build/bin"
+    "bin-dir": ".Build/bin",
+    "allow-plugins": {
+      "typo3/cms-composer-installers": true,
+      "typo3/class-alias-loader": true
+    }
   },
   "extra": {
     "typo3/cms": {

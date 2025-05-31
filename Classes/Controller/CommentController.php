@@ -43,7 +43,7 @@ class CommentController extends ActionController
 {
     protected ?CommentRepository $CommentRepository = null;
 
-    protected NewsRepository $newsRepository;
+    protected ?NewsRepository $newsRepository = null;
 
     protected PersistenceManager $persistenceManager;
 
@@ -54,6 +54,11 @@ class CommentController extends ActionController
     protected int $pageUid;
 
     /**
+     * @var array
+     */
+    protected array $typo3VersionArray = [];
+
+    /**
      * @param CommentLikeRepository $commentLikeRepository
      */
     public function injectCommentLikeRepository(CommentLikeRepository $commentLikeRepository): void
@@ -62,7 +67,7 @@ class CommentController extends ActionController
     }
 
     /**
-     * @param PersistenceManager $PersistenceManager
+     * @param PersistenceManager $persistenceManager
      */
     public function injectPersistenceManager(PersistenceManager $persistenceManager)
     {
@@ -74,7 +79,7 @@ class CommentController extends ActionController
      */
     public function injectCommentRepository(CommentRepository $commentRepository)
     {
-        $this->commentRepository = $commentRepository;
+        $this->CommentRepository = $commentRepository;
     }
 
     /**
@@ -89,6 +94,7 @@ class CommentController extends ActionController
     ) {
         $this->CommentRepository = $CommentRepository;
         $this->persistenceManager = $persistenceManager;
+        $this->newsRepository = $newsRepository;
         $this->newsRepository = $newsRepository;
     }
 
@@ -118,7 +124,7 @@ class CommentController extends ActionController
         if (isset($GLOBALS['TSFE']) && is_object($GLOBALS['TSFE']) && isset($GLOBALS['TSFE']->id)) {
             $this->pageUid = (int)$GLOBALS['TSFE']->id;
         }
-        
+
         $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 
         if (empty($extbaseFrameworkConfiguration['persistence']['storagePid'])) {
@@ -146,8 +152,8 @@ class CommentController extends ActionController
             ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
         );
 
-        $pid = empty($extbaseFrameworkConfiguration['persistence']['storagePid']) 
-            ? $this->pageUid 
+        $pid = empty($extbaseFrameworkConfiguration['persistence']['storagePid'])
+            ? $this->pageUid
             : $extbaseFrameworkConfiguration['persistence']['storagePid'];
 
         $clientIp = $this->getClientIp();
@@ -167,7 +173,7 @@ class CommentController extends ActionController
                 'newsID' => $this->newsUid,
                 'pageid' => $this->pageUid,
                 'pid' => $pid,
-                'settings' => $this->settings, 
+                'settings' => $this->settings,
             ]);
         }
         return $this->htmlResponse();
@@ -199,14 +205,14 @@ class CommentController extends ActionController
     public function createAction(Comment $newComment): ResponseInterface
     {
         $requestData = $this->request->getArguments();
-    
+
         $newComment->setCrdate(time());
         $language = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('language', 'id');
         $newComment->setSysLanguageUid($language);
-    
+
         $parentId = (int)($requestData['parentId']);
-    
-        if ($parentId > 0){
+
+        if ($parentId > 0) {
             $childComment = $this->CommentRepository->findByUid($parentId);
             $childComment->addChildcomment($newComment);
             $this->CommentRepository->update($childComment);
@@ -230,7 +236,7 @@ class CommentController extends ActionController
             'parentId' => $parentId,
             'comment' => 'comment',
         ];
-        return $this->jsonResponse(json_encode($json));
+        return new JsonResponse($json);
     }
 
     /**
@@ -256,7 +262,7 @@ class CommentController extends ActionController
             ->setAddQueryString(true)
             ->setArgumentsToBeExcludedFromQueryString($excludeFromQueryString)
             ->setSection('comments-' . $commentId);
-    
+
         if (array_key_exists('formail', $arguments)) {
             $this->uriBuilder->setArguments(['frommail' => 1]);
         }
@@ -280,7 +286,7 @@ class CommentController extends ActionController
             return trim($ips[0]);
         }
         return $_SERVER['REMOTE_ADDR'] ?? null;
-    } 
+    }
 
     /**
      * @param int $commentId
@@ -367,7 +373,7 @@ class CommentController extends ActionController
             } else {
                 return new JsonResponse(['success' => false, 'error' => 'Already liked']);
             }
-        } else { 
+        } else {
             if ($this->checkIfIpLiked($commentId, $ip)) {
                 $likes = max(0, $likes - 1);
                 $this->removeIpLike($commentId, $ip);
@@ -375,7 +381,7 @@ class CommentController extends ActionController
                 return new JsonResponse(['success' => false, 'error' => 'Not liked yet']);
             }
         }
-      
+
         $comment->setLikes($likes);
         $this->CommentRepository->update($comment);
         $this->persistenceManager->persistAll();
@@ -397,7 +403,7 @@ class CommentController extends ActionController
     {
         $queryBuilder = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)
             ->getQueryBuilderForTable('tx_rdcomments_domain_model_comment');
-    
+
         $commentsRaw = $queryBuilder
             ->select('*')
             ->from('tx_rdcomments_domain_model_comment')
@@ -409,10 +415,10 @@ class CommentController extends ActionController
             ->addOrderBy('crdate', 'DESC')
             ->executeQuery()
             ->fetchAllAssociative();
-    
+
         $allComments = [];
         $repliesMap = [];
-    
+
         foreach ($commentsRaw as $commentRaw) {
             $commentUid = (int)$commentRaw['uid'];
             $parentCommentId = (int)$commentRaw['comment'];
@@ -426,7 +432,7 @@ class CommentController extends ActionController
                 'crdate' => $commentRaw['crdate'] ? date('Y-m-d H:i', $commentRaw['crdate']) : '',
                 'description' => $commentRaw['description'] ?: '',
                 'pinned' => (bool)$commentRaw['pinned'],
-                'likes' => (int)$commentRaw['likes'], 
+                'likes' => (int)$commentRaw['likes'],
                 'replies' => [],
                 'parent' => $parentCommentId,
                 'is_top_level' => empty($parentCommentId),
@@ -436,7 +442,7 @@ class CommentController extends ActionController
                 $repliesMap[$parentCommentId][] = $commentUid;
             }
         }
-    
+
         $buildReplies = function ($comment) use (&$allComments, &$repliesMap, &$buildReplies) {
             $uid = $comment['uid'];
             if (!empty($repliesMap[$uid])) {
@@ -449,9 +455,9 @@ class CommentController extends ActionController
             }
             return $comment;
         };
-    
+
         $commentsByNews = [];
-    
+
         foreach ($allComments as $comment) {
             if ($comment['is_top_level']) {
                 $newsId = $comment['newsuid'];
@@ -465,33 +471,34 @@ class CommentController extends ActionController
                 $commentsByNews[$newsId]['comments'][] = $buildReplies($comment);
             }
         }
-    
+
         foreach ($commentsByNews as &$newsItem) {
             usort($newsItem['comments'], fn($a, $b) => ($b['pinned'] <=> $a['pinned']) ?: strtotime($b['crdate']) <=> strtotime($a['crdate']));
             $news = $this->newsRepository->findByUid($newsItem['newsId']);
             $newsItem['newsTitle'] = $news ? $news->getTitle() : 'News #' . $newsItem['newsId'] . ' (Not Found)';
         }
-    
+
         $formattedNewsList = array_map(fn($newsItem) => [
             'uid' => $newsItem['newsId'],
             'title' => $newsItem['newsTitle']
         ], $commentsByNews);
-    
+
         $this->view->assignMultiple([
             'newsList' => $formattedNewsList,
             'commentsByNews' => $commentsByNews,
         ]);
-    
+
         return $this->htmlResponse();
     }
 
     /**
-     * @return ResponseInterface
+     * @param string $uri
+     * @return string
      */
     protected function addBaseUriIfNecessary($uri): string
     {
         if (PathUtility::isAbsolutePath($uri) || preg_match('#^(\w+:)?//#', $uri)) {
-            return $uri;
+            return (string)$uri;
         }
 
         $baseUri = '';
@@ -506,7 +513,7 @@ class CommentController extends ActionController
             }
         }
 
-        return rtrim($baseUri, '/') . '/' . ltrim($uri, '/');
+        return rtrim((string)$baseUri, '/') . '/' . ltrim((string)$uri, '/');
     }
 
     /**
