@@ -17,4 +17,4 @@ Perfect for websites looking to enhance user engagement through article discussi
 # Installation
 
 Install via composer or Extension Manager.
-** composer require remotedevs/rd-faq **
+composer require remotedevs/rd-comments 
