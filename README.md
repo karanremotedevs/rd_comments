@@ -13,3 +13,8 @@ Clean and responsive design
 Easy setup and configuration
 
 Perfect for websites looking to enhance user engagement through article discussions.
+
+Installation
+Install via composer or Extension Manager.
+
+composer require remotedevs/rd-faq
