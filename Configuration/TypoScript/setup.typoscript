@@ -1,0 +1,116 @@
+plugin.tx_rdcomments_rdcomment {
+    view {
+        templateRootPaths.0 = EXT:rd_comments/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_rdcomments_rdcomment.view.templateRootPath}
+        partialRootPaths.0 = EXT:rd_comments/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_rdcomments_rdcomment.view.partialRootPath}
+        layoutRootPaths.0 = EXT:rd_comments/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_rdcomments_rdcomment.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_rdcomments_rdcomment.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+    settings {
+        termsRequired = {$plugin.tx_rdcomments_rdcomment.settings.termsRequired}
+        termsTypolinkParameter = {$plugin.tx_rdcomments_rdcomment.settings.termsTypolinkParameter}
+        dateFormat = {$plugin.tx_rdcomments_rdcomment.settings.dateFormat}
+        timeFormat = {$plugin.tx_rdcomments_rdcomment.settings.timeFormat}
+    }
+}
+
+page {
+    includeCSS {
+        StyleCss = {$plugin.tx_rdcomments_rdcomment.settings.StyleCss}
+        StyleCss.if.isTrue = {$plugin.tx_rdcomments_rdcomment.settings.StyleCss}
+        FontAwesomeCss = {$plugin.tx_rdcomments_rdcomment.settings.FontAwesomeCss}
+        FontAwesomeCss.if.isTrue = {$plugin.tx_rdcomments_rdcomment.settings.FontAwesomeCss}
+    }
+    includeJS {
+        Minjs = {$plugin.tx_rdcomments_rdcomment.settings.Minjs}
+    }
+    includeJSFooter {
+        CustomJS = {$plugin.tx_rdcomments_rdcomment.settings.CustomJS}
+        CustomJS.if.isTrue = {$plugin.tx_rdcomments_rdcomment.settings.CustomJS}
+    }
+}
+
+commentAjaxCall = PAGE
+commentAjaxCall {
+    typeNum = 1730800496
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        debug = 0
+        no_cache = 1
+        admPanel = 0
+    }
+    315123 = USER
+    315123 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        pluginName = RdComment
+        extensionName = RdComments
+        controller = Comment
+        vendorName = RemoteDevs
+        action = create
+        switchableControllerActions {
+            Comment {
+                1 = create
+            }
+        }
+    }
+}
+
+
+likeAjaxCall = PAGE
+likeAjaxCall {
+    typeNum = 1730800496
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        debug = 0
+        no_cache = 1
+        admPanel = 0
+        additionalHeaders {
+            10.header = Content-Type: application/json
+        }
+    }
+    315123 = USER
+    315123 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        pluginName = RdComment
+        extensionName = RdComments
+        controller = Comment
+        vendorName = RemoteDevs
+        action = like
+        switchableControllerActions {
+            Comment {
+                1 = like
+            }
+        }
+    }
+}
+  
+tt_content.list.20.rdcomments_rdcomment = USER
+tt_content.list.20.rdcomments_rdcomment {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = RdComments
+    pluginName = RdComment
+    controller = Comment
+    action = list
+    settings < plugin.tx_rdcomments_rdcomment.settings
+} 
+
+plugin.tx_rdcomments_rdcomment {
+    features.skipDefaultArguments = 1
+    mvc.callDefaultActionIfActionCantBeResolved = 1
+}
+

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-11-08T11:15:02Z" product-name="comments">
+		<header/>
+		<body>
+			<trans-unit id="pi1_title" xml:space="preserve">
+				<source>News Comment</source>
+			</trans-unit>
+			<trans-unit id="backend.dateformate" xml:space="preserve">
+				<source>Date Formate</source>
+			</trans-unit>
+			<trans-unit id="backend.timeformate" xml:space="preserve">
+				<source>Time Formate</source>
+			</trans-unit>
+			<trans-unit id="backend.Image" xml:space="preserve">
+				<source>Comment User Image</source>
+			</trans-unit>
+			<trans-unit id="backend.captcha" xml:space="preserve">
+				<source>Disable Captcha</source>
+			</trans-unit>
+			<trans-unit id="backend.userSettings.1" xml:space="preserve">
+				<source>FE-user as well as the Anonymous user can comment on the news</source>
+			</trans-unit>
+			<trans-unit id="backend.userSettings.2" xml:space="preserve">
+				<source>Only FE-users can comment on news</source>
+			</trans-unit>
+			<trans-unit id="backend.feUserloginpid" xml:space="preserve">
+				<source>FE-user login page Id</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.newsuid">
+				<source>Newsuid</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.username">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.usermail">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.comment">
+				<source>Comment</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.lblcomments">
+				<source>Comments</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="email">
+				<source>Please enter your valid email address</source>
+			</trans-unit>
+			<trans-unit id="email_required">
+				<source>Valid email is required!</source>
+			</trans-unit>
+			<trans-unit id="name">
+				<source>Please enter your name</source>
+			</trans-unit>
+			<trans-unit id="name_required">
+				<source>Name is required!</source>
+			</trans-unit>
+			<trans-unit id="comment">
+				<source>Please enter your comment</source>
+			</trans-unit>
+			<trans-unit id="comment_required">
+				<source>Comment is required!</source>
+			</trans-unit>
+			<trans-unit id="captcha">
+				<source>Enter the above code here</source>
+			</trans-unit>
+			<trans-unit id="captcha_required">
+				<source>Captcha is required!</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.captcha">
+				<source>Enter the above code here</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.replylabel">
+				<source>Reply</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.likelabel">
+				<source>Like</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.nocommentsfound">
+				<source>Be the First to Comment</source>
+			</trans-unit>
+			<trans-unit id="at">
+				<source>At</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.mailmessage">
+				<source>New Comment are added on news</source>
+			</trans-unit>
+			<trans-unit id="form.submitButton">
+				<source>Post comment</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.newsTitle">
+				<source>News</source>
+			</trans-unit>
+			<trans-unit id="mandatory">
+				<source>These fields are required.</source>
+			</trans-unit>
+			<trans-unit id="replytext">
+				<source>Reply to comment</source>
+			</trans-unit>
+			<trans-unit id="form.emailError">
+				<source>Enter valid email address</source>
+			</trans-unit>
+			<trans-unit id="form.nameError">
+				<source>Enter valid name</source>
+			</trans-unit>
+			<trans-unit id="form.captchaValidationError">
+				<source>Code does not match!</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.validationMessage">
+				<source>Code does not match</source>
+			</trans-unit>
+			<trans-unit id="form.captchaRefresh">
+				<source>Can't read the image? </source>
+			</trans-unit>
+			<trans-unit id="form.captchaRefreshButton">
+				<source>Click here to refresh</source>
+			</trans-unit>
+			<trans-unit id="form.thankyouMessage">
+				<source>Thank you for your comment. Your Comment Added Successfully.</source>
+			</trans-unit>
+			<trans-unit id="tx_comments_domain_model_comments.errorMessage">
+				<source>No News Entry Found</source>
+			</trans-unit>
+			<trans-unit id="CommentsandResponses">
+				<source>Comments and Responses</source>
+			</trans-unit>
+			<trans-unit id="newsfelogin">
+				<source>Click here</source>
+			</trans-unit>
+			<trans-unit id="newsfeloginmsg">
+				<source>to login and add your comments.</source>
+			</trans-unit>
+			<trans-unit id="commentas">
+				<source>Comment will be added as</source>
+			</trans-unit>
+			<trans-unit id="confirm1">
+				<source>Currently, this comment is not displayed on the news.</source>
+			</trans-unit>
+			<trans-unit id="confirm2">
+				<source>Click Here</source>
+			</trans-unit>
+			<trans-unit id="confirm3">
+				<source>to display this comment on the news.</source>
+			</trans-unit>
+			<trans-unit id="form.termsError">
+				<source>Please accept</source>
+			</trans-unit>
+			<trans-unit id="terms_required">
+				<source>Terms is required!</source>
+			</trans-unit>
+			<trans-unit id="terms.label">
+				<source>Terms</source>
+			</trans-unit>
+			<trans-unit id="terms.text">
+				<source><![CDATA[I accept the <a href="%s" target="_blank">terms</a>.]]></source>
+			</trans-unit>
+			<trans-unit id="close">
+				<source>Close</source>
+			</trans-unit>
+            <trans-unit id="comment_deleted_successfully">
+                <source>Comment deleted successfully.</source>
+            </trans-unit>
+            <trans-unit id="comment_not_found">
+                <source>Comment not found or invalid.</source>
+            </trans-unit>
+            <trans-unit id="pin">
+                <source>Pin</source>
+            </trans-unit>
+            <trans-unit id="unpin">
+                <source>Unpin</source>
+            </trans-unit>
+            <trans-unit id="comment_pinned_successfully">
+                <source>Comment pinned successfully.</source>
+            </trans-unit>
+            <trans-unit id="comment_unpinned_successfully">
+                <source>Comment unpinned successfully.</source>
+            </trans-unit>
+            <trans-unit id="delete">
+                <source>Delete</source>
+            </trans-unit>
+            <trans-unit id="confirm_delete">
+                <source>Are you sure you want to delete this comment?</source>
+            </trans-unit>
+			<trans-unit id="plusicon">
+                <source>+</source>
+            </trans-unit>
+			<trans-unit id="warning">
+                <source>No comments for this news item.</source>
+            </trans-unit>
+			<trans-unit id="nonews">
+                <source>No news items found with comments</source>
+            </trans-unit>
+			<trans-unit id="repliesbutton">
+                <source>Show Replies</source>
+            </trans-unit>
+			<trans-unit id="backendheader">
+                <source>News Comments Management</source>
+            </trans-unit>
+            <trans-unit id="tx_comments_domain_model_comments.pinned">
+                <source>Pinned</source>
+            </trans-unit>
+			<trans-unit id="replywarning">
+                <source>Replied by:</source>
+            </trans-unit>
+				<trans-unit id="tx_comments_domain_model_comments.showcommentslabel">
+                <source>showcomments</source>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>
